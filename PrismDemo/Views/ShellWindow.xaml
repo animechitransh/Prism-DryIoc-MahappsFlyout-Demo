@@ -8,12 +8,13 @@
         WindowStartupLocation="CenterScreen"
         Title="ShellWindow" Height="450" Width="800">
     <mah:MetroWindow.Flyouts>
-        <mah:FlyoutsControl prism:RegionManager.RegionName="FlyoutRegion" MinWidth="200">
+        <mah:FlyoutsControl prism:RegionManager.RegionName="FlyoutRegion">
             <mah:FlyoutsControl.ItemContainerStyle>
                 <Style TargetType="{x:Type mah:Flyout}">
                     <Setter Property="Header" Value="{Binding Header}" />
                     <Setter Property="IsOpen" Value="{Binding IsOpen}" />
                     <Setter Property="Position" Value="{Binding Position}" />
+                    <Setter Property="Height" Value="{Binding Height}" />
                 </Style>
             </mah:FlyoutsControl.ItemContainerStyle>
         </mah:FlyoutsControl>

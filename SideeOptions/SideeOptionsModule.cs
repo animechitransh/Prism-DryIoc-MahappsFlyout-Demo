@@ -17,6 +17,7 @@ namespace SideeOptions
         public void OnInitialized(IContainerProvider containerProvider)
         {
             _regionManager.RegisterViewWithRegion("FlyoutRegion", typeof(Side));
+            _regionManager.RegisterViewWithRegion("FlyoutRegion", typeof(ReoGridFlyOut));
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)

@@ -1,18 +1,17 @@
-﻿using Prism.Commands;
+﻿using Core.ViewModels;
+using MahApps.Metro.Controls;
+using Prism.Events;
 using Prism.Mvvm;
+using Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MahApps.Metro.Controls;
-using Prism.Events;
-using Core.ViewModels;
-using Prism.Regions;
 
 namespace SideeOptions.ViewModels
 {
-    public class SideViewModel : BindableBase, INavigationAware
+    class ReoGridFlyOutViewModel : BindableBase, INavigationAware
     {
         private string header;
         public string Header
@@ -21,18 +20,18 @@ namespace SideeOptions.ViewModels
             set { SetProperty(ref this.header, value); }
         }
 
-        private bool isOpen;
-        public bool IsOpen
-        {
-            get { return this.isOpen; }
-            set { SetProperty(ref this.isOpen, value); }
-        }
-
         private int _height;
         public int Height
         {
             get { return _height; }
             set { SetProperty(ref _height, value); }
+        }
+
+        private bool isOpen;
+        public bool IsOpen
+        {
+            get { return this.isOpen; }
+            set { SetProperty(ref this.isOpen, value); }
         }
 
         private Position position;
@@ -44,30 +43,26 @@ namespace SideeOptions.ViewModels
             get { return this.position; }
             set { SetProperty(ref this.position, value); }
         }
-        public SideViewModel()
-        {
-            this.Header = "Top";
-            this.Position = Position.Top;
-        }
+
 
         private string data;
 
-        public SideViewModel(IEventAggregator ie,IRegionManager iregionManager )
+        public ReoGridFlyOutViewModel(IEventAggregator ie, IRegionManager iregionManager)
         {
             this.ie = ie;
             this.region = iregionManager;
             ie.GetEvent<MessageSentEvent>().Subscribe(OnMesageReceieved);
             this.Header = "Top";
-            this.Position = Position.Left;
-            Height = 200;
+            this.Position = Position.Top;
+            Height = 500;
             //IsOpen = true;
         }
 
         private void OnMesageReceieved(string obj)
         {
-            if (obj == "Side")
+            if (obj == "Top")
                 data = obj;
-            
+
             //var k = region.Regions["FlyoutRegion"].Views;
             //region.Regions["FlyoutRegion"].Activate(k.First());
         }
@@ -85,7 +80,8 @@ namespace SideeOptions.ViewModels
 
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
-            
+
         }
     }
 }
+

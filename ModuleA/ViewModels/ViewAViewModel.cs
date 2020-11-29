@@ -37,8 +37,8 @@ namespace ModuleA.ViewModels
             Text = "You Clicked me!";
             //
             // try deactivate this region
-             _eventAggregator.GetEvent<MessageSentEvent>().Publish("haha");
-            iregionManager.RequestNavigate("FlyoutRegion", "Side");
+             _eventAggregator.GetEvent<MessageSentEvent>().Publish("Top");
+            iregionManager.RequestNavigate("FlyoutRegion", "ReoGridFlyOut");
 
         }
     }
